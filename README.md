@@ -1,8 +1,15 @@
 # BOOKED — The 8-Module DJ Business System
 
 8 modules. 8 products in one. The complete DJ business toolkit by **DJ Redlite**.
+**Price: $4.99 one-time** via Cash App.
 
-## What's inside
+## How it's sold
+
+- `index.html` — the public **sales page** (what's inside, how it works, FAQ, buy button → Cash App).
+- `toolkit.html` — the full interactive toolkit, gated behind a personal **access code**.
+- Buying flow: buyer pays $4.99 (note `BOOKED`) → buyer DMs the payment screenshot to @djredlite → Atoy mints a code in his private generator → buyer enters the code to unlock. Codes are validated in-page (checksum); it's a soft gate that keeps honest buyers honest, not DRM.
+
+## What's inside the toolkit
 
 | # | Module | Tools |
 |---|--------|-------|
@@ -17,7 +24,7 @@
 
 ## Run it
 
-It's a single self-contained `index.html` — no build step, no dependencies, no server needed.
+Single self-contained HTML files — no build step, no dependencies, no server.
 
 - **Preview locally:** open `index.html` in any browser.
 - **Publish free:** enable GitHub Pages on this repo (Settings → Pages → Deploy from branch → `main`).
@@ -28,6 +35,6 @@ Everything the user types (pitch details, tracker rows, checklists, calendar, tr
 
 ## Customizing
 
-- Edit the default rates in Module 2 to match your market.
-- Swap the Cash App link in the footer/CTA for your own tip link.
+- The buy-button payment link lives in `index.html` (search `cash.app`) — swap in a $4.99 Cash App **payment link** (Cash App → payment tab → enter $4.99 → Request → Share link) so the amount prefills for buyers.
+- Edit default rates in the toolkit's Module 2 to match your market.
 - Colors live in the `:root` block at the top of the `<style>` section.
