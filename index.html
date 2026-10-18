@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOOKED — The 8-Module DJ Business System</title>
+<meta name="description" content="8 modules. 8 products in one. The complete DJ business toolkit: booking, pricing, rig, crowd reading, content, music organization, client contracts, and longevity.">
+<style>
+:root{
+  --ink:#0d1322; --ink2:#141d33; --gold:#c9a24b; --gold-soft:#e8d5a4;
+  --ivory:#f7f2e7; --paper:#fffdf7; --line:#e6dcc4; --muted:#5d6373; --dark-muted:#a9b0c2;
+  --ok:#1f7a4d; --warn:#b3541e; --bad:#a33232;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;-webkit-text-size-adjust:100%}
+h1,h2,h3,.serif{font-family:Georgia,"Times New Roman",serif}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+/* ---------- hero ---------- */
+.hero{background:radial-gradient(1200px 500px at 50% -10%,#1c2745 0%,var(--ink) 60%);color:#fff;padding:72px 0 56px;text-align:center;border-bottom:4px solid var(--gold)}
+.kicker{display:inline-block;letter-spacing:.28em;text-transform:uppercase;font-size:12px;color:var(--gold-soft);border:1px solid rgba(201,162,75,.5);padding:8px 18px;border-radius:999px;margin-bottom:22px}
+.hero h1{font-size:clamp(40px,7vw,72px);margin:.1em 0 .15em;letter-spacing:.02em}
+.hero h1 .g{color:var(--gold)}
+.hero p.sub{max-width:640px;margin:0 auto 8px;color:#d7dcec;font-size:clamp(16px,2.4vw,20px)}
+.hero p.by{color:var(--dark-muted);font-size:14px;margin-top:14px}
+.hero p.by b{color:var(--gold-soft)}
+/* ---------- module nav ---------- */
+.modnav{position:sticky;top:0;z-index:50;background:rgba(13,19,34,.97);border-bottom:1px solid rgba(201,162,75,.35);overflow-x:auto;white-space:nowrap;padding:10px 12px;text-align:center}
+.modnav a{display:inline-block;color:#e9e4d4;text-decoration:none;font-size:13px;padding:8px 12px;margin:0 2px;border-radius:999px;border:1px solid transparent}
+.modnav a:hover,.modnav a:focus{border-color:var(--gold);color:var(--gold-soft)}
+/* ---------- sections ---------- */
+.module{padding:56px 0 8px}
+.mod-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.mod-num{font-family:Georgia,serif;font-size:15px;color:#fff;background:var(--ink);border:2px solid var(--gold);width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+.mod-head h2{font-size:clamp(26px,4vw,38px);margin:0}
+.mod-tag{color:var(--muted);font-size:15px;margin:2px 0 20px;max-width:720px}
+.card{background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:10px;padding:24px;margin:0 0 22px;box-shadow:0 2px 10px rgba(13,19,34,.05)}
+.card h3{margin-top:0;font-size:21px}
+.card h3 .step{display:inline-block;background:var(--ink);color:var(--gold-soft);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:12px;padding:3px 10px;border-radius:999px;vertical-align:middle;margin-right:8px;letter-spacing:.08em}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+label{display:block;font-size:13px;font-weight:600;margin:12px 0 4px;color:var(--ink2)}
+input[type=text],input[type=date],input[type=number],select,textarea{width:100%;padding:10px 12px;border:1px solid #cfc4a4;border-radius:8px;font-size:15px;font-family:inherit;background:#fff;color:var(--ink)}
+textarea{min-height:90px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+.btn{display:inline-block;background:var(--ink);color:#fff;border:2px solid var(--ink);padding:10px 22px;border-radius:999px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;margin:8px 6px 0 0}
+.btn:hover{background:#1a2440}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.btn.gold:hover{background:#d9b968}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.small{padding:6px 14px;font-size:13px}
+.output{background:#0f1730;color:#eef1f8;border-radius:10px;padding:20px 22px;margin-top:14px;white-space:pre-wrap;font-size:15px;line-height:1.7;border:1px solid #2a3655}
+table.data{width:100%;border-collapse:collapse;margin-top:12px;font-size:14px;background:#fff}
+table.data th{background:var(--ink);color:var(--gold-soft);text-align:left;padding:10px 12px;font-size:13px;letter-spacing:.04em}
+table.data td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+table.data tr:nth-child(even) td{background:#faf6ec}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:700}
+.pill.sent{background:#e3e9f5;color:#2c3a5e}.pill.follow{background:#fdf0d9;color:#8a5a17}
+.pill.booked{background:#dff0e4;color:var(--ok)}.pill.dead{background:#f2e0e0;color:var(--bad)}
+.pill.due{background:#fbe3cf;color:var(--warn)}
+.check{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.check:last-child{border-bottom:0}
+.check input[type=checkbox]{width:20px;height:20px;margin-top:2px;accent-color:var(--gold);flex:0 0 auto;cursor:pointer}
+.check input:checked + span{color:var(--muted);text-decoration:line-through}
+.check .note{display:block;font-size:13px;color:var(--muted);text-decoration:none}
+details.obj{border:1px solid var(--line);border-radius:8px;margin:0 0 10px;background:#fff;overflow:hidden}
+details.obj summary{cursor:pointer;padding:14px 16px;font-weight:700;font-size:15px;list-style:none}
+details.obj summary::-webkit-details-marker{display:none}
+details.obj summary::before{content:"+ ";color:var(--gold);font-weight:900}
+details.obj[open] summary::before{content:"– "}
+details.obj .a{padding:0 16px 16px;color:#333;font-size:15px}
+details.obj .a b{color:var(--ok)}
+.tier{border:2px solid var(--line);border-radius:12px;padding:22px;background:#fff;position:relative}
+.tier.pro{border-color:var(--gold);box-shadow:0 4px 18px rgba(201,162,75,.25)}
+.tier .flag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--ink);font-size:12px;font-weight:800;letter-spacing:.1em;padding:3px 14px;border-radius:999px;text-transform:uppercase}
+.tier h3{margin:0 0 4px;font-size:22px}
+.tier .rate{font-family:Georgia,serif;font-size:15px;color:var(--muted);margin-bottom:10px}
+.tier ul{margin:8px 0;padding-left:20px;font-size:14.5px}
+.tier input.rate-in{font-family:Georgia,serif;font-size:26px;font-weight:700;width:130px;text-align:center;border:2px solid var(--gold);border-radius:8px;padding:6px}
+.cal-row{display:grid;grid-template-columns:110px 150px 1fr;gap:10px;align-items:center;padding:8px 0;border-bottom:1px dashed var(--line)}
+.cal-row .day{font-weight:800;font-size:14px}
+@media(max-width:760px){.cal-row{grid-template-columns:1fr}}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.kv b{white-space:nowrap}
+.agree{border:2px solid var(--ink);border-radius:6px;padding:34px;background:#fff}
+.agree h3{text-align:center;letter-spacing:.12em;text-transform:uppercase;font-size:20px;margin-top:0}
+.agree .fine{font-size:13.5px;color:#333}
+.agree .sig{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:26px}
+@media(max-width:600px){.agree .sig{grid-template-columns:1fr}}
+.sigline{border-top:1px solid #333;margin-top:44px;padding-top:6px;font-size:13px}
+footer{background:var(--ink);color:var(--dark-muted);padding:44px 0;text-align:center;margin-top:60px;border-top:4px solid var(--gold)}
+footer a{color:var(--gold-soft)}
+.howto{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 22px;margin:26px 0;font-size:15px}
+.howto b{color:var(--ink)}
+.note-saved{font-size:12.5px;color:var(--ok);margin-top:6px;min-height:18px}
+@media print{
+  .modnav,.hero .kicker,.btn,.no-print{display:none!important}
+  body{background:#fff}
+  .module{padding:18px 0}
+  .card{box-shadow:none;break-inside:avoid}
+  .agree{border:2px solid #000}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">8 Modules &bull; 8 Products in One</span>
+    <h1>BOOK<span class="g">ED</span></h1>
+    <p class="sub">The complete DJ business system. Booking, pricing, rig, crowd reading, content, music organization, client contracts, and longevity — every tool a working DJ needs, in one place.</p>
+    <p class="by">Built by <b>DJ Redlite</b> — from real gigs, real mistakes, and real paydays.</p>
+  </div>
+</header>
+
+<nav class="modnav no-print" aria-label="Modules">
+  <a href="#m1">1 · Booking Machine</a><a href="#m2">2 · Pricing Shield</a><a href="#m3">3 · Fail-Safe Rig</a><a href="#m4">4 · Crowd Code</a><a href="#m5">5 · Content Engine</a><a href="#m6">6 · Music Locker</a><a href="#m7">7 · Client Lock</a><a href="#m8">8 · Longevity Protocol</a>
+</nav>
+
+<div class="wrap">
+  <div class="howto">
+    <b>How to use this toolkit:</b> Work the modules in order the first time. Everything you type is saved automatically on this device — your pitch scripts, tracker, rate card, checklists, and calendar persist between visits. Use the print buttons on the rate card and agreement to hand clients clean paperwork.
+  </div>
+
+  <!-- ============ MODULE 1 ============ -->
+  <section class="module" id="m1">
+    <div class="mod-head"><span class="mod-num">1</span><h2>Booking Machine</h2></div>
+    <p class="mod-tag">Venues do not book the best DJ. They book the best-presented DJ. This module gives you a pitch script that gets replies and a tracker that makes sure no lead dies.</p>
+
+    <div class="card">
+      <h3><span class="step">Tool A</span>Venue pitch script generator</h3>
+      <p style="color:var(--muted);font-size:14.5px;margin-top:0">Fill in your details once. The script below updates live — copy it into a DM or email and send.</p>
+      <div class="grid2">
+        <div>
+          <label for="p-name">Your DJ name</label>
+          <input type="text" id="p-name" data-keep value="DJ Redlite">
+          <label for="p-city">Your city / market</label>
+          <input type="text" id="p-city" data-keep value="San Diego">
+          <label for="p-genres">Your sound (genres)</label>
+          <input type="text" id="p-genres" data-keep value="open-format: hip-hop, R&amp;B, West Coast, Latin, house, classics">
+        </div>
+        <div>
+          <label for="p-edge">Your edge (one line — what makes a night with you different)</label>
+          <input type="text" id="p-edge" data-keep value="I read the room in real time and keep every generation on the floor — no dead sets, ever.">
+          <label for="p-link">Link to your best mix or video</label>
+          <input type="text" id="p-link" data-keep placeholder="https://...">
+          <label for="p-night">The night / slot you want</label>
+          <input type="text" id="p-night" data-keep value="a Friday or Saturday opening set">
+        </div>
+      </div>
+      <div class="output" id="pitch-out"></div>
+      <button class="btn gold" onclick="copyPitch()">Copy pitch script</button>
+      <span class="note-saved" id="pitch-saved"></span>
+    </div>
+
+    <div class="card">
+      <h3><span class="step">Tool B</span>Outreach tracker</h3>
+      <p style="color:var(--muted);font-size:14.5px;margin-top:0">The fortune is in the follow-up. Log every pitch. Follow up once after 5–7 days, then move on. A venue that says no today books you in six months if you stayed professional.</p>
+      <div class="grid3">
+        <div><label for="o-venue">Venue</label><input type="text" id="o-venue" placeholder="e.g. Side Bar"></div>
+        <div><label for="o-contact">Contact / booker</label><input type="text" id="o-contact" placeholder="Name + IG or email"></div>
+        <div><label for="o-sent">Date sent</label><input type="date" id="o-sent"></div>
+        <div><label for="o-follow">Follow-up date</label><input type="date" id="o-follow"></div>
+        <div><label for="o-status">Status</label>
+          <select id="o-status"><option value="sent">Sent</option><option value="follow">Followed up</option><option value="booked">Booked</option><option value="dead">Dead / no reply</option></select>
+        </div>
+        <div style="align-self:end"><button class="btn" onclick="addOutreach()">Add lead</button></div>
+      </div>
+      <div style="overflow-x:auto">
+      <table class="data" id="outreach-table">
+        <thead><tr><th>Venue</th><th>Contact</th><th>Sent</th><th>Follow up</th><th>Status</th><th></th></tr></thead>
+        <tbody id="outreach-body"><tr><td colspan="6" style="color:var(--muted)">No leads yet — add your first pitch above.</td></tr></tbody>
+      </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 2 ============ -->
+  <section class="module" id="m2">
+    <div class="mod-head"><span class="mod-num">2</span><h2>Pricing Shield</h2></div>
+    <p class="mod-tag">Three tiers end the "how much do you charge?" panic. Quote the middle tier first — it is your real price. The top tier makes the middle look reasonable; the bottom tier protects you from bad gigs.</p>
+
+    <div class="card">
+      <h3><span class="step">Tool A</span>Your 3-tier rate card</h3>
+      <p style="color:var(--muted);font-size:14.5px;margin-top:0">Edit the numbers to match your market — they save automatically. Print it and keep a copy in your gig bag.</p>
+      <div class="grid3">
+        <div class="tier">
+          <h3>Essential</h3>
+          <div class="rate">$<input class="rate-in" type="number" id="r-ess" data-keep value="75"> / hour</div>
+          <ul>
+            <li>Up to 2 hours, music only</li>
+            <li>DJ + controller + basic PA</li>
+            <li>Client provides power + table</li>
+            <li>No lighting, no MC duties</li>
+          </ul>
+          <p style="font-size:13px;color:var(--muted)">Purpose: filters out time-wasters. Never your first quote.</p>
+        </div>
+        <div class="tier pro">
+          <span class="flag">Most booked</span>
+          <h3>Professional</h3>
+          <div class="rate">$<input class="rate-in" type="number" id="r-pro" data-keep value="125"> / hour</div>
+          <ul>
+            <li>Up to 4 hours</li>
+            <li>Pro sound system + wireless mic</li>
+            <li>Basic dance-floor lighting</li>
+            <li>MC announcements + timeline help</li>
+            <li>Online planning form</li>
+          </ul>
+          <p style="font-size:13px;color:var(--muted)">Purpose: your real price. Quote this one first.</p>
+        </div>
+        <div class="tier">
+          <h3>Premium</h3>
+          <div class="rate">$<input class="rate-in" type="number" id="r-pre" data-keep value="200"> / hour</div>
+          <ul>
+            <li>Full event, up to 6 hours</li>
+            <li>Premium sound + full lighting rig</li>
+            <li>Custom intro mix with client names</li>
+            <li>Day-of coordination with vendors</li>
+            <li>Backup rig on site</li>
+          </ul>
+          <p style="font-size:13px;color:var(--muted)">Purpose: makes Professional look like the smart buy.</p>
+        </div>
+      </div>
+      <label for="r-notes">Rate card notes (travel fees, holiday rates, deposit terms)</label>
+      <textarea id="r-notes" data-keep>50% non-refundable deposit locks your date. Balance due 7 days before the event. Travel beyond 30 miles: $1/mile. Holiday weekends: +25%.</textarea>
+      <div><button class="btn" onclick="window.print()">Print rate card</button></div>
+    </div>
+
+    <div class="card">
+      <h3><span class="step">Tool B</span>Objection handling — what to say when they push back</h3>
+      <details class="obj"><summary>"That's too expensive."</summary><div class="a"><b>Say:</b> "I hear you — and I want to be straight with you. The difference between a $300 DJ and a $900 DJ is whether your guests remember the music or the silence. My Professional package keeps the floor full all night, handles your announcements, and I carry backup gear so nothing stops the party. Which part of the night matters most to you?"</div></details>
+      <details class="obj"><summary>"Another DJ quoted me half that."</summary><div class="a"><b>Say:</b> "Totally fair to compare. Ask them three things: do they bring backup equipment, do they MC and coordinate with your other vendors, and what happens if their laptop dies mid-set? If the answers are solid, take the deal. Most of my clients tried the cheaper route once — that's why they call me now."</div></details>
+      <details class="obj"><summary>"Can you do it for exposure?"</summary><div class="a"><b>Say:</b> "I appreciate you thinking of me. I do take on two charity or showcase gigs a year, and those are already booked. For paid events my rate is firm — but if the budget is tight, the Essential tier at 2 hours might fit. Want me to check if your date is still open?"</div></details>
+      <details class="obj"><summary>"We only need you for 2 hours."</summary><div class="a"><b>Say:</b> "Two hours is my minimum booking — setup, teardown, travel, and prep run about 6 hours of my day either way. The Essential tier covers exactly that. Fair warning: in my experience, 2-hour parties always run long. Want me to include the overtime rate in writing so there are no surprises?"</div></details>
+      <details class="obj"><summary>"Do you take requests?"</summary><div class="a"><b>Say:</b> "Yes — with one rule I tell every client: I'll play requests that fit the vibe and the crowd. If a request would clear your dance floor, I'll fold it in later or skip it to protect your party. That's what you're paying me for — judgment, not just a playlist."</div></details>
+      <details class="obj"><summary>"Can we pay you after the event?"</summary><div class="a"><b>Say:</b> "My policy is 50% deposit to lock the date and the balance 7 days before — that way on your event day nobody is thinking about money, including me. I'm 100% focused on your crowd. I can send the one-page agreement right now if you're ready."</div></details>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 3 ============ -->
+  <section class="module" id="m3">
+    <div class="mod-head"><span class="mod-num">3</span><h2>Fail-Safe Rig</h2></div>
+    <p class="mod-tag">Gear fails. Pros don't. Pack the kit, know the backup plan for every failure, and you will never stand in silence in front of a crowd again.</p>
+
+    <div class="card">
+      <h3><span class="step">Tool A</span>Survival kit checklist</h3>
+      <p style="color:var(--muted);font-size:14.5px;margin-top:0">Check items as you pack. Your checks save on this device — run the list before every gig.</p>
+      <div class="grid2">
+        <div>
+          <h4 style="margin:0 0 4px">Power</h4>
+          <div class="check"><input type="checkbox" id="k-p1" data-keep><span>Power strip / extension cord (25 ft)<span class="note">Venues never have an outlet where you need one.</span></span></div>
+          <div class="check"><input type="checkbox" id="k-p2" data-keep><span>Laptop charger + phone charger</span></div>
+          <div class="check"><input type="checkbox" id="k-p3" data-keep><span>Portable battery pack, fully charged</span></div>
+          <h4 style="margin:16px 0 4px">Audio</h4>
+          <div class="check"><input type="checkbox" id="k-a1" data-keep><span>XLR cables x2 + RCA cables x2</span></div>
+          <div class="check"><input type="checkbox" id="k-a2" data-keep><span>1/4" adapters + RCA-to-aux cable<span class="note">The aux cable has saved more gigs than any controller.</span></span></div>
+          <div class="check"><input type="checkbox" id="k-a3" data-keep><span>Backup headphones (cheap pair is fine)</span></div>
+          <div class="check"><input type="checkbox" id="k-a4" data-keep><span>Wireless mic + wired mic backup + batteries</span></div>
+        </div>
+        <div>
+          <h4 style="margin:0 0 4px">Data</h4>
+          <div class="check"><input type="checkbox" id="k-d1" data-keep><span>Main USBs x2 (identical libraries)<span class="note">Two copies. One in your pocket, one in the bag.</span></span></div>
+          <div class="check"><input type="checkbox" id="k-d2" data-keep><span>Emergency USB: 2-hour "greatest hits" set, pre-mixed mindset<span class="note">If everything dies, this plays straight from any mixer or laptop.</span></span></div>
+          <div class="check"><input type="checkbox" id="k-d3" data-keep><span>Phone with offline playlist + aux cable<span class="note">Your last-resort sound system fits in your pocket.</span></span></div>
+          <h4 style="margin:16px 0 4px">Tools &amp; comfort</h4>
+          <div class="check"><input type="checkbox" id="k-t1" data-keep><span>Gaffer tape + flashlight / headlamp</span></div>
+          <div class="check"><input type="checkbox" id="k-t2" data-keep><span>Laptop stand + small towel (sweat happens)</span></div>
+          <div class="check"><input type="checkbox" id="k-t3" data-keep><span>Printed rate card + blank agreements + pen</span></div>
+          <div class="check"><input type="checkbox" id="k-t4" data-keep><span>Water + snack (gig-day rule: eat before, not during)</span></div>
+        </div>
+      </div>
+      <button class="btn ghost small" onclick="resetChecks('k-')">Reset checklist</button>
+    </div>
+
+    <div class="card">
+      <h3><span class="step">Tool B</span>Emergency setup playbook — when it breaks mid-gig</h3>
+      <div class="kv"><b>Controller dies</b><span>Plug USBs straight into the mixer (most club mixers read USB). If no USB ports: phone + aux into any open channel. Keep talking on the mic — a silent DJ looks broken, a talking DJ looks in control.</span></div>
+      <div class="kv"><b>Laptop crashes</b><span>Restart takes 90 seconds — fill it with mic work and a singalong track from the emergency USB. Never troubleshoot in silence.</span></div>
+      <div class="kv"><b>No WiFi / streaming fails</b><span>You never stream at a gig. Your library is local, on two USBs and your laptop. WiFi is a bonus, never the plan.</span></div>
+      <div class="kv"><b>Speaker blows</b><span>Cut bass, lower master 20%, shift the party to the working speaker. Tell the client privately, not over the mic. Offer a discount on the invoice before they ask — it buys loyalty.</span></div>
+      <div class="kv"><b>Power outage</b><span>Phone + portable speaker keeps music going acoustically while you MC. You become the entertainment for 10 minutes. Clients remember how you handled it more than the outage.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 4 ============ -->
+  <section class="module" id="m4">
+    <div class="mod-head"><span class="mod-num">4</span><h2>Crowd Code</h2></div>
+    <p class="mod-tag">Stop organizing music by genre. Organize it by job — what each crate is FOR. Then learn the 3-song rescue rule that saves any dying floor.</p>
+
+    <div class="card">
+      <h3><span class="step">Tool A</span>The functional crate system</h3>
+      <p style="color:var(--muted);font-size:14.5px;margin-top:0">Build these six crates (playlists/folders) in your DJ software. When the room shifts, you reach for a job — not a genre.</p>
+      <div class="grid2">
+        <div class="kv"><b>1. Ignition</b><span>First 30 minutes. Familiar, mid-tempo, singable. Your job: make people comfortable, not impressed.</span></div>
+        <div class="kv"><b>2. Peak Hour</b><span>Your 40 biggest weapons. High energy, tested crowd-pleasers. Only opened when the floor is full.</span></div>
+        <div class="kv"><b>3. Cool Down</b><span>Slow it 10–15 BPM without losing the room. Groove tracks, R&amp;B, slow wine — the breather before the next peak.</span></div>
+        <div class="kv"><b>4. Request Vault</b><span>The 100 most-requested songs of all time, clean versions. Weddings and private parties live here.</span></div>
+        <div class="kv"><b>5. Wildcards</b><span>Your secret weapons — remixes, blends, and curveballs only you play. Maximum 2 per hour. Scarcity is the point.</span></div>
+        <div class="kv"><b>6. Local Flavor</b><span>Regional anthems for your market (West Coast classics in San Diego, etc.). Nothing bonds a room like home.</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="step">Tool B</span>The 3-song rescue rule</h3>
+      <p><b>The rule:</b> when the floor thins, you get exactly three songs to win it back. No experimenting, no deep cuts, no ego. Plan your rescue sequence before the gig — write it here.</p>
+      <div class="grid3">
+        <div><label for="r1">Rescue song 1 — the familiar anthem</label><input type="text" id="r1" data-keep placeholder="e.g. a song everyone knows word-for-word"><p style="font-size:13px;color:var(--muted)">Everyone sings. Nobody sits out a song they know.</p></div>
+        <div><label for="r2">Rescue song 2 — the current hit</label><input type="text" id="r2" data-keep placeholder="e.g. the biggest song of the last 6 months"><p style="font-size:13px;color:var(--muted)">Proof you're current. Energy goes up, not sideways.</p></div>
+        <div><label for="r3">Rescue song 3 — the singalong closer</label><input type="text" id="r3" data-keep placeholder="e.g. arms-in-the-air anthem"><p style="font-size:13px;color:var(--muted)">Lock the win. Hands up, phones out, floor packed.</p></div>
+      </div>
+      <p style="font-size:14.5px;background:#fdf6e3;border:1px solid var(--line);border-radius:8px;padding:14px 16px"><b>If three songs don't fix it, the problem isn't the music</b> — it's the moment (dinner service, speeches running long, the bar line). Stop DJing at the empty floor: grab the mic, run a quick shout-out or game, and restart the room yourself.</p>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 5 ============ -->
+  <section class="module" id="m5">
+    <div class="mod-head"><span class="mod-num">5</span><h2>Content Engine</h2></div>
+    <p class="mod-tag">You don't need to post every day. You need three types of content on rotation — proof you work, process people respect, and personality people follow.</p>
+
+    <div class="card">
+      <h3><span class="step">Tool A</span>The 3 content types</h3>
+      <div class="grid3">
+        <div><h4 style="margin:0 0 6px">1. Proof</h4><p style="font-size:14.5px;margin:0">Crowded floors, hands up, client reactions. <b>Job:</b> make bookers think "I want my event to look like that." Film 15 seconds every gig — the drop, the reaction, the packed floor.</p></div>
+        <div><h4 style="margin:0 0 6px">2. Process</h4><p style="font-size:14.5px;margin:0">Digging, tagging, practicing blends, packing the rig. <b>Job:</b> make other DJs and fans respect the craft. "Sunday Dig Day" clips are free content forever.</p></div>
+        <div><h4 style="margin:0 0 6px">3. Personality</h4><p style="font-size:14.5px;margin:0">Opinions, stories, hot takes, teaching. <b>Job:</b> make people follow <i>you</i>, not just your mixes. Talk to the camera for 60 seconds about one DJ lesson.</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="step">Tool B</span>Weekly content calendar</h3>
+      <p style="color:var(--muted);font-size:14.5px;margin-top:0">Pick a type per day, jot the idea. Two posts a week done well beats seven done badly. Saves automatically.</p>
+      <div id="cal">
+        <div class="cal-row"><span class="day">Monday</span><select id="c-mon" data-keep><option value="">— rest / no post —</option><option>Proof</option><option>Process</option><option>Personality</option></select><input type="text" id="ci-mon" data-keep placeholder="Post idea…"></div>
+        <div class="cal-row"><span class="day">Tuesday</span><select id="c-tue" data-keep><option value="">— rest / no post —</option><option>Proof</option><option>Process</option><option>Personality</option></select><input type="text" id="ci-tue" data-keep placeholder="Post idea…"></div>
+        <div class="cal-row"><span class="day">Wednesday</span><select id="c-wed" data-keep><option value="">— rest / no post —</option><option>Proof</option><option>Process</option><option>Personality</option></select><input type="text" id="ci-wed" data-keep placeholder="Post idea…"></div>
+        <div class="cal-row"><span class="day">Thursday</span><select id="c-thu" data-keep><option value="">— rest / no post —</option><option>Proof</option><option>Process</option><option>Personality</option></select><input type="text" id="ci-thu" data-keep placeholder="Post idea…"></div>
+        <div class="cal-row"><span class="day">Friday</span><select id="c-fri" data-keep><option value="">— rest / no post —</option><option>Proof</option><option>Process</option><option>Personality</option></select><input type="text" id="ci-fri" data-keep placeholder="Post idea…"></div>
+        <div class="cal-row"><span class="day">Saturday</span><select id="c-sat" data-keep><option value="">— rest / no post —</option><option>Proof</option><option>Process</option><option>Personality</option></select><input type="text" id="ci-sat" data-keep placeholder="Post idea…"></div>
+        <div class="cal-row"><span class="day">Sunday</span><select id="c-sun" data-keep><option value="">— rest / no post —</option><option>Proof</option><option>Process</option><option>Personality</option></select><input type="text" id="ci-sun" data-keep placeholder="Post idea…"></div>
+      </div>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:0"><b>Starter rotation:</b> Wednesday = Process (dig day clip), Saturday = Proof (gig night clip), one Personality post whenever you have something to say. That's a full engine on 3 posts a week.</p>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 6 ============ -->
+  <section class="module" id="m6">
+    <div class="mod-head"><span class="mod-num">6</span><h2>Music Locker</h2></div>
+    <p class="mod-tag">A DJ with 10,000 untagged songs has a hoard, not a library. One focused dig day a week plus a simple tagging system turns your collection into a weapon.</p>
+
+    <div class="card">
+      <h3><span class="step">Tool A</span>Sunday Dig Day — the 90-minute ritual</h3>
+      <div class="grid3">
+        <div><h4 style="margin:0 0 6px">0:00 – 0:30 · Dig</h4><p style="font-size:14.5px;margin:0">Find 10–15 new tracks. Charts, DJ pools, friends' sets, Shazam from the week. Download, don't stream — gigs run on local files.</p></div>
+        <div><h4 style="margin:0 0 6px">0:30 – 1:00 · Tag</h4><p style="font-size:14.5px;margin:0">Tag every new track with the system below and file it into its functional crate. Untagged tracks don't make the gig USB.</p></div>
+        <div><h4 style="margin:0 0 6px">1:00 – 1:30 · Drill</h4><p style="font-size:14.5px;margin:0">Practice 3 blends with the new music. Record one. If a blend survives practice, it survives the gig.</p></div>
+      </div>
+      <div class="check"><input type="checkbox" id="dig-done" data-keep><span><b>This week's Dig Day is done.</b><span class="note">Check it every Sunday. Streaks build libraries.</span></span></div>
+    </div>
+
+    <div class="card">
+      <h3><span class="step">Tool B</span>The tagging system + track log</h3>
+      <p style="font-size:14.5px"><b>Every track gets four tags:</b> <b>Energy</b> (1 = background, 5 = peak-hour weapon) · <b>Era</b> (70s / 80s / 90s / 2000s / 2010s / Current) · <b>Genre</b> · <b>Function</b> (Ignition / Peak / Cool Down / Request / Wildcard). Log new finds here — it saves automatically and becomes your searchable dig journal.</p>
+      <div class="grid3">
+        <div><label for="t-title">Title</label><input type="text" id="t-title" placeholder="Song title"></div>
+        <div><label for="t-artist">Artist</label><input type="text" id="t-artist" placeholder="Artist"></div>
+        <div><label for="t-energy">Energy (1–5)</label><select id="t-energy"><option>3</option><option>1</option><option>2</option><option>4</option><option>5</option></select></div>
+        <div><label for="t-era">Era</label><select id="t-era"><option>Current</option><option>2010s</option><option>2000s</option><option>90s</option><option>80s</option><option>70s</option></select></div>
+        <div><label for="t-genre">Genre</label><input type="text" id="t-genre" placeholder="e.g. Hip-Hop"></div>
+        <div><label for="t-func">Function</label><select id="t-func"><option>Peak</option><option>Ignition</option><option>Cool Down</option><option>Request</option><option>Wildcard</option></select></div>
+      </div>
+      <label for="t-notes">Notes</label><input type="text" id="t-notes" placeholder="Why this track works, what it blends with…">
+      <div><button class="btn" onclick="addTrack()">Log track</button></div>
+      <div style="overflow-x:auto">
+      <table class="data"><thead><tr><th>Title</th><th>Artist</th><th>Energy</th><th>Era</th><th>Genre</th><th>Function</th><th>Notes</th><th></th></tr></thead>
+      <tbody id="track-body"><tr><td colspan="8" style="color:var(--muted)">No tracks logged yet.</td></tr></tbody></table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 7 ============ -->
+  <section class="module" id="m7">
+    <div class="mod-head"><span class="mod-num">7</span><h2>Client Lock</h2></div>
+    <p class="mod-tag">Handshake deals create horror stories. A one-page agreement and a five-minute intake form turn "my cousin's DJ" energy into a professional booking — and get you paid on time.</p>
+
+    <div class="card">
+      <h3><span class="step">Tool A</span>One-page DJ service agreement</h3>
+      <p style="color:var(--muted);font-size:14.5px;margin-top:0">Fill it in with the client, print two copies, both sign. <i>Plain-language template — have a local attorney review before heavy use.</i></p>
+      <div class="agree" id="agreement">
+        <h3>DJ Service Agreement</h3>
+        <div class="grid2">
+          <div><label>Client name</label><input type="text" data-keep id="ag-client" placeholder="Full name"></div>
+          <div><label>DJ / company</label><input type="text" data-keep id="ag-dj" value="DJ Redlite"></div>
+          <div><label>Event date</label><input type="date" data-keep id="ag-date"></div>
+          <div><label>Venue + address</label><input type="text" data-keep id="ag-venue" placeholder="Venue name, address"></div>
+          <div><label>Performance hours</label><input type="text" data-keep id="ag-hours" placeholder="e.g. 8:00 PM – 12:00 AM"></div>
+          <div><label>Package tier</label><select data-keep id="ag-tier"><option>Professional</option><option>Essential</option><option>Premium</option></select></div>
+          <div><label>Total fee ($)</label><input type="number" data-keep id="ag-total" placeholder="500"></div>
+          <div><label>Overtime rate ($/hr)</label><input type="number" data-keep id="ag-ot" placeholder="150"></div>
+        </div>
+        <div class="fine" style="margin-top:16px">
+          <p><b>1. Deposit.</b> A 50% non-refundable deposit is due with this signed agreement to reserve the date. The balance is due 7 days before the event.</p>
+          <p><b>2. Cancellation.</b> Client cancellations more than 30 days out forfeit the deposit only. Cancellations within 30 days owe the full fee.</p>
+          <p><b>3. Overtime.</b> Extra time is billed at the overtime rate above, in 30-minute increments, payable before the DJ continues.</p>
+          <p><b>4. Setup needs.</b> Client provides one 6-ft table, two chairs, and power within 25 ft of the setup area, plus 60 minutes for setup and 30 for teardown.</p>
+          <p><b>5. Music judgment.</b> The DJ accepts must-play and do-not-play lists (see intake form) and reserves the right to decline requests that would harm the event's energy.</p>
+          <p><b>6. Liability.</b> The DJ carries backup equipment and will make every reasonable effort to perform, but is not liable for failures caused by venue power, weather, or force majeure; liability is limited to the total fee.</p>
+        </div>
+        <div class="sig">
+          <div><div class="sigline">Client signature / date</div></div>
+          <div><div class="sigline">DJ signature / date</div></div>
+        </div>
+      </div>
+      <div class="no-print" style="margin-top:12px"><button class="btn gold" onclick="window.print()">Print agreement</button></div>
+    </div>
+
+    <div class="card">
+      <h3><span class="step">Tool B</span>Client intake form — 5 minutes that prevent 5 hours of problems</h3>
+      <div class="grid2">
+        <div>
+          <label for="in-type">Event type</label><input type="text" id="in-type" data-keep placeholder="e.g. Wedding reception, 30th birthday">
+          <label for="in-must">Must-play songs (up to 10)</label><textarea id="in-must" data-keep placeholder="One per line"></textarea>
+          <label for="in-noplay">Do-not-play list</label><textarea id="in-noplay" data-keep placeholder="Songs, artists, or genres that are banned"></textarea>
+        </div>
+        <div>
+          <label for="in-vibe">Vibe in three words</label><input type="text" id="in-vibe" data-keep placeholder="e.g. classy, high-energy, family">
+          <label for="in-timeline">Key timeline moments</label><textarea id="in-timeline" data-keep placeholder="e.g. First dance 8:30, cake cutting 9:15, last song midnight"></textarea>
+          <label for="in-coord">Day-of coordinator (name + phone)</label><input type="text" id="in-coord" data-keep placeholder="Who do I find when I arrive?">
+        </div>
+      </div>
+      <button class="btn" onclick="copyIntake()">Copy intake as text</button>
+      <span class="note-saved" id="intake-saved"></span>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 8 ============ -->
+  <section class="module" id="m8">
+    <div class="mod-head"><span class="mod-num">8</span><h2>Longevity Protocol</h2></div>
+    <p class="mod-tag">The DJs who last 20 years aren't the most talented — they're the ones who didn't burn out, go broke, or blow a speaker they couldn't replace. Protect the asset: you.</p>
+
+    <div class="card">
+      <h3><span class="step">Tool A</span>Burnout prevention rules</h3>
+      <div class="grid2">
+        <div>
+          <div class="check"><input type="checkbox" id="l-1" data-keep><span><b>Cap gigs at 3 per week.</b><span class="note">The fourth gig in a week is where mistakes — and resentment — start.</span></span></div>
+          <div class="check"><input type="checkbox" id="l-2" data-keep><span><b>One full day off per week. No "quick" gigs.</b><span class="note">Recovery is a business expense. Budget it like one.</span></span></div>
+          <div class="check"><input type="checkbox" id="l-3" data-keep><span><b>Protect sleep on gig nights.</b><span class="note">Late teardown + early morning = the burnout express. Plan the morning after as carefully as the gig.</span></span></div>
+        </div>
+        <div>
+          <div class="check"><input type="checkbox" id="l-4" data-keep><span><b>The "try again tomorrow" rule.</b><span class="note">Two 90-minute work sprints max per project per day. Then write down the one blocker and stop. Grinding past it just burns tomorrow's energy.</span></span></div>
+          <div class="check"><input type="checkbox" id="l-5" data-keep><span><b>Keep a "no" list.</b><span class="note">Write down the gigs you'll decline: unpaid "exposure" sets, venues with bad sound and worse pay, anything past your cutoff time. Decide once, not every time you're tired.</span></span></div>
+          <div class="check"><input type="checkbox" id="l-6" data-keep><span><b>Separate gig money from life money.</b><span class="note">One account in, bills and savings out. If you can't see the business, you can't grow it.</span></span></div>
+        </div>
+      </div>
+      <button class="btn ghost small" onclick="resetChecks('l-')">Reset rules</button>
+    </div>
+
+    <div class="card">
+      <h3><span class="step">Tool B</span>The kit system — gear + money maintenance</h3>
+      <div class="grid2">
+        <div>
+          <h4 style="margin:0 0 6px">Gear schedule</h4>
+          <div class="check"><input type="checkbox" id="g-1" data-keep><span><b>Weekly:</b> wipe down controller, coil cables properly, charge all batteries</span></div>
+          <div class="check"><input type="checkbox" id="g-2" data-keep><span><b>Monthly:</b> test every cable and adapter, update DJ software, back up library to a second drive</span></div>
+          <div class="check"><input type="checkbox" id="g-3" data-keep><span><b>Quarterly:</b> deep clean, replace worn cables, refresh the emergency USB, review insurance</span></div>
+        </div>
+        <div>
+          <h4 style="margin:0 0 6px">Money rules</h4>
+          <div class="kv"><b>Deposits</b><span>50% non-refundable, always. A date isn't booked until money moves.</span></div>
+          <div class="kv"><b>Gear fund</b><span>10% of every gig into a separate gear-replacement fund. Speakers die on their own schedule.</span></div>
+          <div class="kv"><b>Slow-season buffer</b><span>January and February are quiet. Three months of expenses saved means you negotiate from strength, not panic.</span></div>
+          <div class="kv"><b>Raise annually</b><span>Every January, raise every tier 10%. Your costs rise; your rates should too.</span></div>
+        </div>
+      </div>
+      <button class="btn ghost small" onclick="resetChecks('g-')">Reset gear schedule</button>
+    </div>
+  </section>
+
+  <div class="card" style="text-align:center;border-top:4px solid var(--ink)">
+    <h3 class="serif" style="font-size:26px">You now own the whole system.</h3>
+    <p style="max-width:620px;margin:0 auto;color:var(--muted)">Eight modules, one toolkit. Work it in order, keep the checklists honest, and the gigs compound. If this system helped you get booked, tips keep the lights on:</p>
+    <p style="margin-top:14px"><a class="btn gold" href="https://cash.app/$AtoyHarris" target="_blank" rel="noopener">Tip $AtoyHarris on Cash App</a></p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="serif" style="font-size:22px;color:#fff;margin:0 0 6px">BOOK<span style="color:var(--gold)">ED</span> — The 8-Module DJ Business System</p>
+    <p style="margin:0;font-size:14px">Built by <b style="color:var(--gold-soft)">DJ Redlite</b> · San Diego, CA<br>Your data never leaves this device — everything is saved locally in your browser.</p>
+  </div>
+</footer>
+
+<script>
+/* ---------- generic persistence for [data-keep] fields ---------- */
+function saveAll(){
+  document.querySelectorAll('[data-keep]').forEach(function(el){
+    var k='djtk_'+el.id, v = el.type==='checkbox' ? (el.checked?'1':'0') : el.value;
+    try{localStorage.setItem(k,v);}catch(e){}
+  });
+}
+function loadAll(){
+  document.querySelectorAll('[data-keep]').forEach(function(el){
+    var k='djtk_'+el.id, v=null;
+    try{v=localStorage.getItem(k);}catch(e){}
+    if(v===null||v===undefined) return;
+    if(el.type==='checkbox') el.checked = (v==='1'); else el.value=v;
+  });
+}
+document.addEventListener('input',function(e){ if(e.target.hasAttribute('data-keep')) saveAll(); });
+document.addEventListener('change',function(e){ if(e.target.hasAttribute('data-keep')) saveAll(); });
+function resetChecks(prefix){
+  document.querySelectorAll('input[type=checkbox][data-keep]').forEach(function(el){
+    if(el.id.indexOf(prefix)===0){ el.checked=false; try{localStorage.removeItem('djtk_'+el.id);}catch(e){} }
+  });
+}
+
+/* ---------- Module 1: pitch generator ---------- */
+function val(id){var el=document.getElementById(id);return el?el.value.trim():'';}
+function buildPitch(){
+  var name=val('p-name')||'DJ Redlite', city=val('p-city')||'San Diego',
+      genres=val('p-genres')||'open-format', edge=val('p-edge'),
+      link=val('p-link'), night=val('p-night')||'an upcoming night';
+  var t='Hi — I\'m '+name+', a '+genres+' DJ based in '+city+'.\n\n'+
+    (edge?edge+'\n\n':'')+
+    'I\'d love to talk about '+night+' at your venue. '+
+    'I bring my own pro sound, keep the floor packed across generations, and I\'m easy to work with — on time, no drama.\n\n'+
+    (link?'Here\'s my latest mix so you can hear what a night sounds like:\n'+link+'\n\n':'')+
+    'Open to a quick call this week? I\'m free to send over my rate card and availability.\n\n— '+name;
+  document.getElementById('pitch-out').textContent=t;
+}
+function copyPitch(){
+  buildPitch();
+  var t=document.getElementById('pitch-out').textContent;
+  function done(){var s=document.getElementById('pitch-saved');s.textContent='Copied — paste it into your DM or email.';setTimeout(function(){s.textContent='';},2500);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(function(){fallback();});}
+  else fallback();
+  function fallback(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);done();}
+}
+['p-name','p-city','p-genres','p-edge','p-link','p-night'].forEach(function(id){
+  document.getElementById(id).addEventListener('input',buildPitch);
+});
+
+/* ---------- Module 1: outreach tracker ---------- */
+function getOutreach(){try{return JSON.parse(localStorage.getItem('djtk_outreach')||'[]');}catch(e){return[];}}
+function setOutreach(a){try{localStorage.setItem('djtk_outreach',JSON.stringify(a));}catch(e){}}
+function pillClass(s){return s==='sent'?'sent':s==='follow'?'follow':s==='booked'?'booked':'dead';}
+function pillLabel(s){return s==='sent'?'Sent':s==='follow'?'Followed up':s==='booked'?'Booked':'Dead';}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function renderOutreach(){
+  var rows=getOutreach(), tb=document.getElementById('outreach-body'), today=new Date().toISOString().slice(0,10);
+  if(!rows.length){tb.innerHTML='<tr><td colspan="6" style="color:var(--muted)">No leads yet — add your first pitch above.</td></tr>';return;}
+  tb.innerHTML=rows.map(function(r,i){
+    var due=r.follow&&r.follow<=today&&r.status!=='booked'&&r.status!=='dead';
+    return '<tr><td><b>'+esc(r.venue)+'</b></td><td>'+esc(r.contact)+'</td><td>'+esc(r.sent)+'</td>'+
+      '<td>'+(due?'<span class="pill due">Follow up now</span><br>':'')+esc(r.follow)+'</td>'+
+      '<td><span class="pill '+pillClass(r.status)+'">'+pillLabel(r.status)+'</span></td>'+
+      '<td><button class="btn small ghost" onclick="delOutreach('+i+')">✕</button></td></tr>';
+  }).join('');
+}
+function addOutreach(){
+  var v=val('o-venue'); if(!v){alert('Add a venue name first.');return;}
+  var rows=getOutreach();
+  rows.unshift({venue:v,contact:val('o-contact'),sent:val('o-sent'),follow:val('o-follow'),status:val('o-status')});
+  setOutreach(rows); renderOutreach();
+  ['o-venue','o-contact','o-sent','o-follow'].forEach(function(id){document.getElementById(id).value='';});
+  document.getElementById('o-status').value='sent';
+}
+function delOutreach(i){var rows=getOutreach();rows.splice(i,1);setOutreach(rows);renderOutreach();}
+
+/* ---------- Module 6: track log ---------- */
+function getTracks(){try{return JSON.parse(localStorage.getItem('djtk_tracks')||'[]');}catch(e){return[];}}
+function setTracks(a){try{localStorage.setItem('djtk_tracks',JSON.stringify(a));}catch(e){}}
+function renderTracks(){
+  var rows=getTracks(), tb=document.getElementById('track-body');
+  if(!rows.length){tb.innerHTML='<tr><td colspan="8" style="color:var(--muted)">No tracks logged yet.</td></tr>';return;}
+  tb.innerHTML=rows.map(function(r,i){
+    return '<tr><td><b>'+esc(r.title)+'</b></td><td>'+esc(r.artist)+'</td><td>'+esc(r.energy)+'</td><td>'+esc(r.era)+'</td><td>'+esc(r.genre)+'</td><td>'+esc(r.func)+'</td><td>'+esc(r.notes)+'</td>'+
+    '<td><button class="btn small ghost" onclick="delTrack('+i+')">✕</button></td></tr>';
+  }).join('');
+}
+function addTrack(){
+  var t=val('t-title'); if(!t){alert('Add a song title first.');return;}
+  var rows=getTracks();
+  rows.unshift({title:t,artist:val('t-artist'),energy:val('t-energy'),era:val('t-era'),genre:val('t-genre'),func:val('t-func'),notes:val('t-notes')});
+  setTracks(rows); renderTracks();
+  ['t-title','t-artist','t-genre','t-notes'].forEach(function(id){document.getElementById(id).value='';});
+}
+function delTrack(i){var rows=getTracks();rows.splice(i,1);setTracks(rows);renderTracks();}
+
+/* ---------- Module 7: intake copy ---------- */
+function copyIntake(){
+  var t='CLIENT INTAKE — '+val('in-type')+'\n\n'+
+    'Vibe: '+val('in-vibe')+'\n'+
+    'Coordinator: '+val('in-coord')+'\n\n'+
+    'MUST PLAY:\n'+val('in-must')+'\n\n'+
+    'DO NOT PLAY:\n'+val('in-noplay')+'\n\n'+
+    'TIMELINE:\n'+val('in-timeline');
+  function done(){var s=document.getElementById('intake-saved');s.textContent='Copied — paste it into a message or email.';setTimeout(function(){s.textContent='';},2500);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(function(){alert('Copy failed — select the text manually.');});}
+  else{alert('Copy failed — select the text manually.');}
+}
+
+/* ---------- init ---------- */
+loadAll(); buildPitch(); renderOutreach(); renderTracks();
+</script>
+</body>
+</html>
